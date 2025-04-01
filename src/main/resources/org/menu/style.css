@@ -1,0 +1,16 @@
+/* styles.css */
+.titled-pane {
+    -fx-animated: true; /* Enables built-in animation */
+}
+
+/* Removes extra padding/borders from the content area */
+.titled-pane > .content {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-padding: 0;
+}
+
+/* Adds padding to the content inside (adjust as needed) */
+.titled-pane > .content > * {
+    -fx-padding: 10;
+}
