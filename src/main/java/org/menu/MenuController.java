@@ -3,6 +3,10 @@ package org.menu;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class MenuController {
     private ToggleGroup bunGroup;
     private ToggleGroup pattyGroup;
@@ -28,43 +32,26 @@ public class MenuController {
     @FXML private RadioButton rbSesame;
 
     private double runApp() {
-        boolean bunSesameRB = rbSesame.isSelected();
-        boolean bunBriocheRB = rbBrioche.isSelected();
+        Burger b = new Burger();
+        if (rbSesame.isSelected()) b.addBun("Sesame");
+        if (rbBrioche.isSelected()) b.addBun("Brioche");
 
-        boolean cheeseAmericanCB = cbAmerican.isSelected();
-        boolean cheeseCheddarCB = cbCheddar.isSelected();
-        boolean cheeseSwissCB = cbSwiss.isSelected();
-        boolean cheesePepperJackCB = cbPepper.isSelected();
+        if (cbCheddar.isSelected()) b.addCheese("Cheddar");
+        if (cbAmerican.isSelected()) b.addCheese("American");
+        if (cbSwiss.isSelected()) b.addCheese("Swiss");
+        if (cbPepper.isSelected()) b.addCheese("Pepper Jack");
 
-        boolean pattyVegRB = rbVeg.isSelected();
-        boolean pattyNonVegRB = rbNonVeg.isSelected();
-        boolean pattyImpRB = rbImpossible.isSelected();
-        boolean pattyChickenRB = rbChicken.isSelected();
+        if (cbLettuce.isSelected()) b.addTopping("Lettuce");
+        if (cbOnion.isSelected()) b.addTopping("Onion");
+        if (cbTomato.isSelected()) b.addTopping("Tomato");
+        if (cbBacon.isSelected()) b.addTopping("Bacon");
 
-        boolean exLettuceCB = cbLettuce.isSelected();
-        boolean exTomatoCB = cbTomato.isSelected();
-        boolean exBaconCB = cbBacon.isSelected();
-        boolean exOnionCB = cbOnion.isSelected();
-        double price = 0;
-        if (bunSesameRB) price += 2.00;
-        if (bunBriocheRB) price += 2.50;
+        if (rbNonVeg.isSelected()) b.addPatty("NonVeg");
+        if (rbVeg.isSelected()) b.addPatty("Veg");
+        if (rbImpossible.isSelected()) b.addPatty("Impossible");
+        if (rbChicken.isSelected()) b.addPatty("Chicken");
 
-        if (cheeseCheddarCB) price += 0.50;
-        if (cheeseAmericanCB) price += 0.50;
-        if (cheeseSwissCB) price += 0.75;
-        if (cheesePepperJackCB) price += 1.00;
-
-        if (exLettuceCB) price += 0.10;
-        if (exOnionCB) price += 0.15;
-        if (exTomatoCB) price += 0.25;
-        if (exBaconCB) price += 1.00;
-
-        if (pattyNonVegRB) price += 1.00;
-        if (pattyVegRB) price += 1.50;
-        if (pattyImpRB) price += 0.75;
-        if (pattyChickenRB) price += 1.00;
-
-        return price;
+        return  b.getPrice();
     }
 
     @FXML
