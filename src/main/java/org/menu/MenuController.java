@@ -45,7 +45,6 @@ public class MenuController {
         boolean exTomatoCB = cbTomato.isSelected();
         boolean exBaconCB = cbBacon.isSelected();
         boolean exOnionCB = cbOnion.isSelected();
-
         double price = 0;
         if (bunSesameRB) price += 2.00;
         if (bunBriocheRB) price += 2.50;
